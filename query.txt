@@ -195,4 +195,16 @@ ORDER BY `corso_laurea` ASC
 
 ----
 
+6. Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
+
+SELECT `teachers`.`name` AS `nome_professore`, `teachers`.`surname` AS `cognome_professore`, `departments`.`name` AS `nome_dipartimento`, `departments`.`id` AS `codice_dipartimento`
+
+FROM `course_teacher`
+
+INNER JOIN `courses` ON `course_teacher`.`course_id` = `courses`.`id`
+INNER JOIN `teachers` ON `course_teacher`.`teacher_id` = `teachers`.`id`
+INNER JOIN `degrees` ON `courses`.`degree_id` = `degrees`.`id`
+INNER JOIN `departments` ON `degrees`.`department_id` = `departments`.`id`
+
+WHERE `department_id` = 5;
 
